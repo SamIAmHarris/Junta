@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar" />
+
+
+    <LinearLayout
+        android:id="@+id/lunch_drinks_linear_layout"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="160dp">
+
+        <TextView
+            android:text="I'm getting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/activity_choices"
+            android:prompt="@string/lunch"
+            android:id="@+id/spinner_create_activity"/>
+
+        <TextView
+            android:text="at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:text="Choose Time"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/lunch_drinks_linear_layout"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/text_clock_create_activity"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"/>
+
+
+    <EditText
+        android:id="@+id/location_et_create_activity"
+        android:hint="Enter Location"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_below="@+id/text_clock_create_activity"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"/>
+
+
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/createActivityFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        android:src="@android:drawable/ic_input_add"
+        fab:fab_colorNormal="@color/primaryYellow"
+        fab:fab_colorPressed="@color/primaryBlue"/>
+
+</RelativeLayout>
