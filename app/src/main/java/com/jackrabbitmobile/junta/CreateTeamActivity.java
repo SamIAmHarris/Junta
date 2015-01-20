@@ -9,8 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jackrabbitmobile.junta.model.PhoneNumber;
 import com.jackrabbitmobile.junta.model.Team;
 import com.jackrabbitmobile.junta.model.TeamActivity;
 import com.jackrabbitmobile.junta.model.User;
@@ -31,9 +33,11 @@ public class CreateTeamActivity extends ActionBarActivity {
     EditText teamNameET;
     Button createTeamBT;
 
-    EditText joinTeamNameET;
+    TextView joinTeamNameTV;
     Button joinTeamBT;
     Context mContext;
+
+    Team existingTeam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +51,10 @@ public class CreateTeamActivity extends ActionBarActivity {
 
         teamNameET = (EditText) findViewById(R.id.team_name_et);
         createTeamBT = (Button) findViewById(R.id.create_team_bt);
-        joinTeamNameET = (EditText) findViewById(R.id.join_team_name_et);
+        joinTeamNameTV = (TextView) findViewById(R.id.join_team_name_tv);
         joinTeamBT = (Button) findViewById(R.id.join_team_bt);
+
+        checkIfUserIsOnATeam();
 
         createTeamBT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,22 +96,51 @@ public class CreateTeamActivity extends ActionBarActivity {
         });
 
         joinTeamBT.setOnClickListener(new View.OnClickListener() {
-            String teamName = teamNameET.getText().toString();
             @Override
             public void onClick(View v) {
-                ParseQuery<Team> query = ParseQuery.getQuery(Team.class);
-                query.whereEqualTo("teamName", teamName);
-                query.findInBackground(new FindCallback<Team>() {
-                    @Override
-                    public void done(List<Team> parseObjects, com.parse.ParseException e) {
-                        if(parseObjects.size() > 0) {
-                            Toast.makeText(mContext, "Team Name Already Exists, Try a new one!", Toast.LENGTH_SHORT).show();
+                User user = (User) User.getCurrentUser();
+                if (user != null) {
+                    user.setTeam(existingTeam);
+                    user.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            Intent navDrawerIntent = new Intent(mContext, NavDrawerActivity.class);
+                            startActivity(navDrawerIntent);
                         }
-                    }
-                });
+                    });
+                    ;
+                }
             }
         });
 
 
+    }
+
+    public void checkIfUserIsOnATeam() {
+        User user = (User) User.getCurrentUser();
+        if(user != null) {
+            String phoneNumber = user.getPhoneNumber();
+            ParseQuery<PhoneNumber> query = ParseQuery.getQuery(PhoneNumber.class);
+            query.whereEqualTo("phoneNumber", phoneNumber);
+            query.findInBackground(new FindCallback<PhoneNumber>() {
+                @Override
+                public void done(List<PhoneNumber> parseObjects, com.parse.ParseException e) {
+                    Log.i("Debugging", "Debugging");
+                    if(parseObjects.size() > 0) {
+                        for (PhoneNumber p : parseObjects) {
+                            existingTeam = p.getTeam();
+                            try {
+                                existingTeam.fetchIfNeeded();
+                            } catch (ParseException pe) {
+
+                            }
+                            joinTeamNameTV.setText(existingTeam.getTeamName());
+                        }
+                    }
+                }
+            });
+        } else {
+            //send to login screen
+        }
     }
 }

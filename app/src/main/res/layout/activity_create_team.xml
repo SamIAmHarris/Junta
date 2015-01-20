@@ -27,17 +27,17 @@
         android:layout_marginBottom="100dp"/>
 
 
-    <EditText
+    <TextView
         android:layout_below="@+id/create_team_bt"
-        android:id="@+id/join_team_name_et"
-        android:hint="Enter Team Name"
+        android:id="@+id/join_team_name_tv"
+        android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <Button
-        android:layout_below="@+id/join_team_name_et"
+        android:layout_below="@+id/join_team_name_tv"
         android:id="@+id/join_team_bt"
         android:text="Join Team"
         android:layout_centerHorizontal="true"
