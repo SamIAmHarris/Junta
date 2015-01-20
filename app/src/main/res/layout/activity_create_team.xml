@@ -23,6 +23,25 @@
         android:text="Create Team"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"/>
+
+
+    <EditText
+        android:layout_below="@+id/create_team_bt"
+        android:id="@+id/join_team_name_et"
+        android:hint="Enter Team Name"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_below="@+id/join_team_name_et"
+        android:id="@+id/join_team_bt"
+        android:text="Join Team"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 

@@ -7,8 +7,31 @@
     tools:context="com.jackrabbitmobile.junta.NavigationDrawerFragment">
 
 
+
     <TextView
-        android:text="LEFT SLIDING DRAWER"
+    android:id="@+id/left_sliding_group_name_tv"
+    android:text="Group Name Here"
+    android:layout_width="wrap_content"
+    android:layout_alignParentTop="true"
+    android:gravity="center_horizontal"
+    android:layout_height="wrap_content" />
+
+
+    <ImageButton
+        android:id="@+id/left_sliding_add_contact_bt"
         android:layout_width="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_alignParentRight="true"
+        android:src="@android:drawable/ic_input_add"
+        android:layout_alignParentTop="true"
         android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/left_sliding_users_rv"
+        android:layout_below="@+id/left_sliding_add_contact_bt"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
 </RelativeLayout>

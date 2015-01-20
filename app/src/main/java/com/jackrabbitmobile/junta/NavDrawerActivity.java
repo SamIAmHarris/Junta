@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -36,12 +38,16 @@ import java.util.List;
 public class NavDrawerActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
-    TextView testView;
-    static String testString = "";
     private Handler mHandler;
 
     FloatingActionButton createActivityBT;
     Context mContext;
+
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+    ArrayList<TeamActivity> teamActivities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +57,10 @@ public class NavDrawerActivity extends ActionBarActivity {
         mContext = getApplicationContext();
         mHandler = new Handler();
 
-
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer,(DrawerLayout)findViewById(R.id.drawer_layout), toolbar);
@@ -62,6 +68,21 @@ public class NavDrawerActivity extends ActionBarActivity {
         LeftDrawerFragment leftDrawerFragment = (LeftDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_left_drawer);
         leftDrawerFragment.setUp(R.id.fragment_left_drawer,(DrawerLayout)findViewById(R.id.drawer_layout), toolbar);
+
+        teamActivities = new ArrayList<>();
+        mRecyclerView = (RecyclerView) findViewById(R.id.activities_recycler_view);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        // specify an adapter (see also next example)
+        mAdapter = new MyAdapter(teamActivities);
+        mRecyclerView.setAdapter(mAdapter);
 
         createActivityBT = (FloatingActionButton) findViewById(R.id.navDrawerFab);
         createActivityBT.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +92,6 @@ public class NavDrawerActivity extends ActionBarActivity {
             }
         });
 
-        testView = (TextView) findViewById(R.id.test_tv);
         getTeamActivities();
     }
 
@@ -105,20 +125,18 @@ public class NavDrawerActivity extends ActionBarActivity {
         if (currentUser != null) {
             // do stuff with the user
             Team myTeam = (Team) currentUser.getTeam();
-            ParseQuery<ParseObject> query = ParseQuery.getQuery("TeamActivity");
+            ParseQuery<TeamActivity> query = ParseQuery.getQuery(TeamActivity.class);
             query.whereEqualTo("team", myTeam);
-            query.findInBackground(new FindCallback<ParseObject>() {
+            query.findInBackground(new FindCallback<TeamActivity>() {
                 @Override
-                public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
+                public void done(List<TeamActivity> parseObjects, com.parse.ParseException e) {
                     Log.i("Debugging", "Debugging");
-                    for (ParseObject p : parseObjects) {
-                        TeamActivity t = (TeamActivity) p;
-                        testString += t.getLocationName();
+                    for (TeamActivity t : parseObjects) {
+                        teamActivities.add(t);
+                        mAdapter.notifyDataSetChanged();
                     }
                 }
             });
-            testView.setText(testString);
-            testView.invalidate();
         } else {
             // show the signup or login screen
         }

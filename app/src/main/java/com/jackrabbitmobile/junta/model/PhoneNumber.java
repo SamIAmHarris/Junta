@@ -18,4 +18,13 @@ public class PhoneNumber extends ParseObject{
     public void addTeam(Team team) {
         addUnique("teams", team);
     }
+
+    public void setTeam(Team team) {put("team", team);}
+
+    public Team getTeam() {return (Team) get("team");}
+
+    public void setPhoneNumber(String number) {put("phoneNumber", number);}
+
+    public String getPhoneNumber() {return getString("phoneNumber");}
+
 }
