@@ -8,7 +8,11 @@ import android.widget.TextView;
 
 import com.jackrabbitmobile.junta.model.TeamActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Created by SamMyxer on 1/15/15.
@@ -23,14 +27,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // each data item is just a string in this case
         public TextView mLocationTV;
         public TextView mTimeTV;
-        public TextView mWhatTV;
 
         public ViewHolder(View v) {
             super(v);
             mLocationTV = (TextView) v.findViewById(R.id.location_tv_activity_card);
             mTimeTV = (TextView) v.findViewById(R.id.time_tv_activity_card);
-            mWhatTV = (TextView) v.findViewById(R.id.what_tv_activity_card);
-
         }
     }
 
@@ -59,9 +60,34 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
 
         TeamActivity data = mDataset.get(position);
+
+        Date date = data.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
+        String time = sdf.format(date);
+        int hours = Integer.valueOf(time.substring(0,2));
+        int minutes = Integer.valueOf(time.substring(3));
+        String ampm;
+
+        if(hours == 0) {
+            hours = 12;
+            ampm = "A";
+        } else if (hours > 12) {
+            hours = hours - 12;
+            ampm = "P";
+        } else if (hours == 12) {
+            ampm = "P";
+        } else {
+            ampm = "A";
+        }
+
         holder.mLocationTV.setText(data.getLocationName());
-        holder.mTimeTV.setText(data.getTime().toString());
-        holder.mWhatTV.setText(data.getType());
+
+        if(minutes == 0) {
+            holder.mTimeTV.setText(hours + ampm + " @ ");
+        } else {
+            holder.mTimeTV.setText(hours + ":" + minutes + ampm + " @ ");
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)

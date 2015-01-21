@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/app_bar"
-        layout="@layout/app_bar" />
+        layout="@layout/app_bar_custom_create" />
 
 
     <LinearLayout
@@ -61,18 +61,5 @@
         android:layout_centerHorizontal="true"
         android:layout_width="160dp"
         android:layout_height="wrap_content"/>
-
-
-
-    <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/createActivityFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"
-        fab:fab_colorNormal="@color/primaryYellow"
-        fab:fab_colorPressed="@color/primaryBlue"/>
 
 </RelativeLayout>

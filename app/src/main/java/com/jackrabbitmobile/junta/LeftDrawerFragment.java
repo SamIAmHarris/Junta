@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jackrabbitmobile.junta.model.PhoneNumber;
@@ -42,6 +43,7 @@ public class LeftDrawerFragment extends android.support.v4.app.Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
 
     ImageButton addContactBT;
+    TextView groupNameTV;
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
@@ -59,21 +61,6 @@ public class LeftDrawerFragment extends android.support.v4.app.Fragment {
     public LeftDrawerFragment() {
         // Required empty public constructor
     }
-    public static List<Information> getData(){
-        //load only static data inside a drawer
-        List<Information> data=new ArrayList<>();
-        int[] icons={R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher};
-        String[] titles={"Junta","Iqchi","Junta","Iqchi"};
-        for(int i=0;i<100;i++)
-        {
-            Information current=new Information();
-            current.iconId=icons[i%icons.length];
-            current.title=titles[i%titles.length];
-            data.add(current);
-        }
-        return data;
-    }
-
 
 
     @Override
@@ -102,6 +89,9 @@ public class LeftDrawerFragment extends android.support.v4.app.Fragment {
         mAdapter = new MembersAdapter(mMemberList);
         mRecyclerView.setAdapter(mAdapter);
 
+        groupNameTV = (TextView) layout.findViewById(R.id.left_sliding_group_name_tv);
+        setGroupName();
+
         addContactBT = (ImageButton) layout.findViewById(R.id.left_sliding_add_contact_bt);
         addContactBT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +109,6 @@ public class LeftDrawerFragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        //getMemberList();
     }
 
     @Override
@@ -156,9 +145,8 @@ public class LeftDrawerFragment extends android.support.v4.app.Fragment {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, slideOffset);
-//                if(slideOffset<0.6) {
-//                    toolbar.setAlpha(1 - slideOffset);
-//                }
+                toolbar.setAlpha(100);
+
             }
         };
 
@@ -259,6 +247,25 @@ public class LeftDrawerFragment extends android.support.v4.app.Fragment {
             }
         });
         alert.show();
+    }
+
+    public void openDrawerFromActivity() {
+        mDrawerLayout.openDrawer(containerView);
+    }
+
+    public void setGroupName() {
+        User user = (User) User.getCurrentUser();
+        if (user != null) {
+            Team team = (Team) user.getTeam();
+            try {
+                team.fetchIfNeeded();
+                groupNameTV.setText(team.getTeamName());
+            } catch (ParseException pe) {
+                groupNameTV.setText("Could not find team name!");
+            }
+        } else {
+            //send the user to the login screen
+        }
     }
 
 

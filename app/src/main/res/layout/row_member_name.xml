@@ -4,7 +4,10 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:layout_margin="4dp"
+        android:text="Member Name"
         android:id="@+id/member_name_left_sliding_row"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -9,6 +9,7 @@
 
     <item android:id="@+id/add_friends"
         android:title="Add Friends"
+        android:icon="@drawable/ic_group_add_white_24dp"
         android:orderInCategory="200"
         app:showAsAction="always"/>
 

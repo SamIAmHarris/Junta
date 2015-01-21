@@ -1,14 +1,22 @@
 package com.jackrabbitmobile.junta;
 
 
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -16,6 +24,8 @@ import com.jackrabbitmobile.junta.model.Team;
 import com.jackrabbitmobile.junta.model.TeamActivity;
 import com.jackrabbitmobile.junta.model.User;
 import com.melnykov.fab.FloatingActionButton;
+import com.parse.ParseException;
+import com.parse.SaveCallback;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -26,31 +36,26 @@ import java.util.Date;
  */
 public class CreateActivity extends ActionBarActivity implements TimePickerFragment.TimePickerDialogListener {
 
-    FloatingActionButton createActivityBT;
     TextView textClock;
     Spinner choiceSpinnner;
     EditText locationET;
     Date mDate;
 
+    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
+
         Toolbar toolbar= (Toolbar) findViewById(R.id.app_bar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.primaryYellow));
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ImageButton okBT = (ImageButton) toolbar.findViewById(R.id.ok_button_create_toolbar);
+        ImageButton cancelBT = (ImageButton) toolbar.findViewById(R.id.cancel_button_create_toolbar);
 
-        createActivityBT = (FloatingActionButton) findViewById(R.id.createActivityFab);
-        textClock = (TextView) findViewById(R.id.text_clock_create_activity);
-        choiceSpinnner = (Spinner) findViewById(R.id.spinner_create_activity);
-        locationET = (EditText) findViewById(R.id.location_et_create_activity);
-
-
-        createActivityBT.setOnClickListener(new View.OnClickListener() {
+        okBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 User currentUser = (User) User.getCurrentUser();
@@ -68,12 +73,31 @@ public class CreateActivity extends ActionBarActivity implements TimePickerFragm
                     teamActivity.setTeam((Team)currentUser.getTeam());
                     teamActivity.saveInBackground();
                     team.addAllUnique("activities", Arrays.asList(teamActivity));
-                    team.saveInBackground();
+                    team.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            Intent intent = new Intent(mContext, NavDrawerActivity.class);
+                            startActivity(intent);
+                        }
+                    });
                 } else {
                     // show the signup or login screen
                 }
             }
         });
+
+        cancelBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        mContext = getApplicationContext();
+
+        textClock = (TextView) findViewById(R.id.text_clock_create_activity);
+        choiceSpinnner = (Spinner) findViewById(R.id.spinner_create_activity);
+        locationET = (EditText) findViewById(R.id.location_et_create_activity);
 
         textClock = (TextView) findViewById(R.id.text_clock_create_activity);
         textClock.setOnClickListener(new View.OnClickListener() {
@@ -98,14 +122,6 @@ public class CreateActivity extends ActionBarActivity implements TimePickerFragm
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        if(id==android.R.id.home){
-            NavUtils.navigateUpFromSameTask(this);
-        }
         return super.onOptionsItemSelected(item);
     }
 

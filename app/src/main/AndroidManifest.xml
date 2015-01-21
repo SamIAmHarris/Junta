@@ -21,8 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".JoinCreateActivity" android:screenOrientation="portrait"
-            />
         <activity android:name=".LoginActivity" android:screenOrientation="portrait"
             />
         <activity android:name=".CreateTeamActivity" android:screenOrientation="portrait"
@@ -30,7 +28,7 @@
 
         <activity
             android:name=".NavDrawerActivity"
-            android:label="@string/title_activity_main"/>
+            android:label="Junta"/>
         <activity
             android:name=".CreateActivity"
             android:label="@string/title_activity_sub">

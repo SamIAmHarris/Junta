@@ -31,7 +31,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_margin="16dp"
-            android:src="@android:drawable/ic_input_add"
+            android:src="@drawable/ic_add_black_24dp"
             fab:fab_colorNormal="@color/primaryYellow"
             fab:fab_colorPressed="@color/primaryBlue"/>
 
@@ -51,6 +51,7 @@
         android:name="com.jackrabbitmobile.junta.LeftDrawerFragment"
         android:layout_width="@dimen/nav_drawer_width"
         android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
         android:layout_gravity="end"
         app:layout="@layout/fragment_left_sliding_drawer"
         tools:layout="@layout/fragment_left_sliding_drawer" />

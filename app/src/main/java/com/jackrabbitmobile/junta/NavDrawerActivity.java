@@ -49,6 +49,10 @@ public class NavDrawerActivity extends ActionBarActivity {
 
     ArrayList<TeamActivity> teamActivities;
 
+    LeftDrawerFragment leftDrawerFragment;
+
+    DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,12 +64,14 @@ public class NavDrawerActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setTitle("Junta");
+        drawerLayout =(DrawerLayout) findViewById(R.id.drawer_layout);
 
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer,(DrawerLayout)findViewById(R.id.drawer_layout), toolbar);
 
-        LeftDrawerFragment leftDrawerFragment = (LeftDrawerFragment)
+        leftDrawerFragment = (LeftDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_left_drawer);
         leftDrawerFragment.setUp(R.id.fragment_left_drawer,(DrawerLayout)findViewById(R.id.drawer_layout), toolbar);
 
@@ -115,6 +121,8 @@ public class NavDrawerActivity extends ActionBarActivity {
             return true;
         }
         if (id == R.id.add_friends) {
+            leftDrawerFragment.openDrawerFromActivity();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
