@@ -13,25 +13,31 @@
         name="lunch_choices">
         <item>@string/hoboken_pie</item>
         <item>@string/chipotle</item>
-        <item>@string/jimmy_johns</item>
-        <item>@string/my_thai_mom</item>
+        <item>@string/due_forni</item>
+        <item>@string/wholly_cow_burgers</item>
         <item>@string/kebabalicious</item>
-        <item>@string/planet_sub</item>
-        <item>@string/wholly_cow</item>
+        <item>@string/gus_fried_chicken</item>
+        <item>@string/parkside</item>
+        <item>@string/athenian</item>
+        <item>@string/cafe_divine</item>
+        <item>@string/mai_thai_restaurant</item>
+        <item>@string/roaring_fork</item>
         <item>@string/slake</item>
     </string-array>
 
 
     <string-array
         name="drinks_choices">
-        <item>@string/hoboken_pie</item>
-        <item>@string/chipotle</item>
-        <item>@string/jimmy_johns</item>
-        <item>@string/my_thai_mom</item>
-        <item>@string/kebabalicious</item>
-        <item>@string/planet_sub</item>
-        <item>@string/wholly_cow</item>
-        <item>@string/slake</item>
+        <item>@string/royal_blue</item>
+        <item>@string/empire_control_room</item>
+        <item>@string/jackalope</item>
+        <item>@string/cheer_up_charlies</item>
+        <item>@string/handlebar</item>
+        <item>@string/the_chicago_house</item>
+        <item>@string/paper_tiger</item>
+        <item>@string/lavaca_bar</item>
+        <item>@string/casino</item>
+        <item>@string/firehouse_hostel</item>
     </string-array>
 
 </resources>
