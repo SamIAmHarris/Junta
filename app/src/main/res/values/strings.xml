@@ -16,4 +16,15 @@
     <string name="lunch">Lunch</string>
     <string name="drinks">Drinks</string>
 
+
+    <string name="hoboken_pie">Hoboken Pie</string>
+    <string name="chipotle">Chipotle</string>
+    <string name="slake">Slake</string>
+    <string name="kebabalicious">Kebabalicious</string>
+    <string name="wholly_cow">Wholly Cow</string>
+    <string name="my_thai_mom">My Thai Mom</string>
+    <string name="planet_sub">Planet Sub</string>
+    <string name="jimmy_johns">Jimmy Johns</string>
+
+
 </resources>

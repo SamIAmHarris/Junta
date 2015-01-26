@@ -8,4 +8,30 @@
             >@string/drinks</item>
     </string-array>
 
+
+    <string-array
+        name="lunch_choices">
+        <item>@string/hoboken_pie</item>
+        <item>@string/chipotle</item>
+        <item>@string/jimmy_johns</item>
+        <item>@string/my_thai_mom</item>
+        <item>@string/kebabalicious</item>
+        <item>@string/planet_sub</item>
+        <item>@string/wholly_cow</item>
+        <item>@string/slake</item>
+    </string-array>
+
+
+    <string-array
+        name="drinks_choices">
+        <item>@string/hoboken_pie</item>
+        <item>@string/chipotle</item>
+        <item>@string/jimmy_johns</item>
+        <item>@string/my_thai_mom</item>
+        <item>@string/kebabalicious</item>
+        <item>@string/planet_sub</item>
+        <item>@string/wholly_cow</item>
+        <item>@string/slake</item>
+    </string-array>
+
 </resources>
