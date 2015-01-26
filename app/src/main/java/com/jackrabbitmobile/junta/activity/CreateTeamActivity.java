@@ -1,4 +1,4 @@
-package com.jackrabbitmobile.junta;
+package com.jackrabbitmobile.junta.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,14 +12,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jackrabbitmobile.junta.R;
 import com.jackrabbitmobile.junta.model.PhoneNumber;
 import com.jackrabbitmobile.junta.model.Team;
-import com.jackrabbitmobile.junta.model.TeamActivity;
 import com.jackrabbitmobile.junta.model.User;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.util.Arrays;

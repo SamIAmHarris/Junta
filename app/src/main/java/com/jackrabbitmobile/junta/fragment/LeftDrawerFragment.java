@@ -1,4 +1,4 @@
-package com.jackrabbitmobile.junta;
+package com.jackrabbitmobile.junta.fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,6 +21,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jackrabbitmobile.junta.adapter.MembersAdapter;
+import com.jackrabbitmobile.junta.R;
 import com.jackrabbitmobile.junta.model.PhoneNumber;
 import com.jackrabbitmobile.junta.model.Team;
 import com.jackrabbitmobile.junta.model.User;

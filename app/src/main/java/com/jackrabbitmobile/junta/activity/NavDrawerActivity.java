@@ -1,4 +1,4 @@
-package com.jackrabbitmobile.junta;
+package com.jackrabbitmobile.junta.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,23 +13,20 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jackrabbitmobile.junta.fragment.LeftDrawerFragment;
+import com.jackrabbitmobile.junta.adapter.MyAdapter;
+import com.jackrabbitmobile.junta.fragment.NavigationDrawerFragment;
+import com.jackrabbitmobile.junta.R;
 import com.jackrabbitmobile.junta.model.Team;
 import com.jackrabbitmobile.junta.model.TeamActivity;
 import com.jackrabbitmobile.junta.model.User;
 import com.melnykov.fab.FloatingActionButton;
 import com.parse.FindCallback;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.SaveCallback;
 
-import org.w3c.dom.Text;
-
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**

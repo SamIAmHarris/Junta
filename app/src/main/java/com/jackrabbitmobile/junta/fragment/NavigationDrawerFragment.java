@@ -1,4 +1,4 @@
-package com.jackrabbitmobile.junta;
+package com.jackrabbitmobile.junta.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,6 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.jackrabbitmobile.junta.model.Information;
+import com.jackrabbitmobile.junta.R;
+import com.jackrabbitmobile.junta.adapter.VivzAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

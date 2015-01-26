@@ -1,4 +1,4 @@
-package com.jackrabbitmobile.junta;
+package com.jackrabbitmobile.junta.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,13 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.jackrabbitmobile.junta.R;
 import com.jackrabbitmobile.junta.model.TeamActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 /**
  * Created by SamMyxer on 1/15/15.

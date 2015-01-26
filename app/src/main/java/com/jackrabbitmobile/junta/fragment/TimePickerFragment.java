@@ -1,4 +1,4 @@
-package com.jackrabbitmobile.junta;
+package com.jackrabbitmobile.junta.fragment;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
+
+import com.jackrabbitmobile.junta.activity.CreateActivity;
 
 import java.util.Calendar;
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DADADA"
-    tools:context="com.jackrabbitmobile.junta.NavigationDrawerFragment">
+    tools:context="com.jackrabbitmobile.junta.fragment.NavigationDrawerFragment">
 
     <TextView
         android:id="@+id/left_sliding_group_name_tv"

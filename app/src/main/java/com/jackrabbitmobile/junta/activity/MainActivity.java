@@ -1,10 +1,12 @@
-package com.jackrabbitmobile.junta;
+package com.jackrabbitmobile.junta.activity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+
+import com.jackrabbitmobile.junta.R;
 
 
 public class MainActivity extends ActionBarActivity {

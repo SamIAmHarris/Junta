@@ -1,29 +1,24 @@
-package com.jackrabbitmobile.junta;
+package com.jackrabbitmobile.junta.activity;
 
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.transition.Explode;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.jackrabbitmobile.junta.R;
+import com.jackrabbitmobile.junta.fragment.TimePickerFragment;
 import com.jackrabbitmobile.junta.model.Team;
 import com.jackrabbitmobile.junta.model.TeamActivity;
 import com.jackrabbitmobile.junta.model.User;
-import com.melnykov.fab.FloatingActionButton;
 import com.parse.ParseException;
 import com.parse.SaveCallback;
 
