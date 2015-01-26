@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.jackrabbitmobile.junta.model.Information;
 import com.jackrabbitmobile.junta.R;
-import com.jackrabbitmobile.junta.adapter.VivzAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,30 +24,15 @@ public class NavigationDrawerFragment  extends Fragment {
 
     public static final String PREF_FILE_NAME="testpref";
     public static final String KEY_USER_LEARNED_DRAWER="user_learned_drawer";
-    private RecyclerView recyclerView;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-    private VivzAdapter adapter;
     private boolean mUserLearnedDrawer;
     private boolean mFromSavedInstanceState;
     private View containerView;
     private boolean isDrawerOpened=false;
+
     public NavigationDrawerFragment() {
         // Required empty public constructor
-    }
-    public static List<Information> getData(){
-        //load only static data inside a drawer
-        List<Information> data=new ArrayList<>();
-        int[] icons={R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher,R.drawable.ic_launcher};
-        String[] titles={"Sam","is","really","cool"};
-        for(int i=0;i<100;i++)
-        {
-            Information current=new Information();
-            current.iconId=icons[i%icons.length];
-            current.title=titles[i%titles.length];
-            data.add(current);
-        }
-        return data;
     }
 
 
@@ -80,10 +62,8 @@ public class NavigationDrawerFragment  extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View layout=inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-        recyclerView= (RecyclerView) layout.findViewById(R.id.drawerList);
-        adapter=new VivzAdapter(getActivity(),getData());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
         return layout;
     }
 
