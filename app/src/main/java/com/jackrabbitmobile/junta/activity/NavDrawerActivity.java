@@ -15,8 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.jackrabbitmobile.junta.adapter.TeamActivityCardAdapter;
 import com.jackrabbitmobile.junta.fragment.LeftDrawerFragment;
-import com.jackrabbitmobile.junta.adapter.MyAdapter;
 import com.jackrabbitmobile.junta.fragment.NavigationDrawerFragment;
 import com.jackrabbitmobile.junta.R;
 import com.jackrabbitmobile.junta.model.Team;
@@ -84,7 +84,7 @@ public class NavDrawerActivity extends ActionBarActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(teamActivities);
+        mAdapter = new TeamActivityCardAdapter(teamActivities, this);
         mRecyclerView.setAdapter(mAdapter);
 
         createActivityBT = (FloatingActionButton) findViewById(R.id.navDrawerFab);

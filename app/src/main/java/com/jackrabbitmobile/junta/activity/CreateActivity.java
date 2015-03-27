@@ -66,6 +66,7 @@ public class CreateActivity extends ActionBarActivity implements TimePickerFragm
                     teamActivity.setLocationName(location);
                     teamActivity.setTime(mDate);
                     teamActivity.setTeam((Team)currentUser.getTeam());
+                    teamActivity.addUnique("users", currentUser);
                     teamActivity.saveInBackground();
                     team.addAllUnique("activities", Arrays.asList(teamActivity));
                     team.saveInBackground(new SaveCallback() {
