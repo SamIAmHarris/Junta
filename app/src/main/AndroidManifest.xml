@@ -36,6 +36,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.NavDrawerActivity" />
         </activity>
+
+        <activity android:name=".activity.LoginTwoActivity"
+            android:screenOrientation="portrait"
+            >
+
+            </activity>
     </application>
 
 </manifest>

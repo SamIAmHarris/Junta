@@ -1,43 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:layout_marginTop="200dp"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/email_address_et_login"
-        android:hint="Email Address"
-        android:layout_width="wrap_content"
+
+        <EditText
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/username_et_login"
+            android:hint="First Name and Last Initial"
+            android:layout_width="240dp"
+            android:layout_marginBottom="6dp"
+            style="@style/button_login"
+            android:background="@drawable/edit_text_background_border"
+            android:layout_marginTop="200dp"/>
+
+        <EditText
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/email_address_et_login"
+            android:hint="Email Address"
+            android:layout_width="240dp"
+            style="@style/button_login"
+            android:layout_margin="6dp"
+            android:background="@drawable/edit_text_background_border"
+            android:inputType="textEmailAddress"/>
+
+        <EditText
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/password_et_login"
+            android:hint="Password"
+            style="@style/button_login"
+            android:layout_width="240dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/edit_text_background_border"
+            android:inputType="textPassword"/>
+
+        <EditText
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/phone_number_et_login"
+            android:hint="Phone Number"
+            style="@style/button_login"
+            android:layout_width="240dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/edit_text_background_border"
+            android:inputType="textPassword"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"/>
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_marginBottom="48dip" >
 
-    <EditText
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/password_et_login"
-        android:hint="Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"/>
-
-    <EditText
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/phone_number_et_login"
-        android:hint="Phone Number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="phone"/>
-
-    <Button
-        android:id="@+id/login_bt_login"
-        android:text="Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sign in"
+            android:layout_margin="32dip"
+            android:background="@color/primaryBlue"
+            android:textColor="#FFFFFF" />
 
 
+    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
